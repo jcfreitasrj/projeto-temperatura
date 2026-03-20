@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:5.0
+    container_name: projeto-temperatura-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  backend:
+    build: ./backend
+    container_name: projeto-temperatura-backend
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    environment:
+      - SERIAL_PORT=/dev/ttyACM0
+      - FLASK_DEBUG=False
+    devices:
+      - "/dev/ttyACM0:/dev/ttyACM0"   # Acesso à porta serial do Arduino
+    depends_on:
+      - mongo
+
+  frontend:
+    build: ./frontend
+    container_name: projeto-temperatura-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:80"   # Porta do host: porta do container (nginx)
+    depends_on:
+      - backend
+
+volumes:
+  mongo_data:

@@ -1,0 +1,103 @@
+# ============================================
+# COMANDOS BÁSICOS DOCKER
+# ============================================
+
+# Listar containers em execução
+docker ps
+
+# Listar todos os containers (inclusive parados)
+docker ps -a
+
+# Listar imagens baixadas
+docker images
+
+# Parar um container específico
+docker stop <container_id ou nome>
+
+# Iniciar um container parado
+docker start <container_id ou nome>
+
+# Remover um container (deve estar parado)
+docker rm <container_id ou nome>
+
+# Remover uma imagem
+docker rmi <imagem_id ou nome>
+
+# Ver logs de um container
+docker logs <container_id ou nome>
+
+# Acompanhar logs em tempo real
+docker logs -f <container_id ou nome>
+
+# Executar um comando dentro de um container em execução
+docker exec -it <container_id ou nome> bash
+
+# ============================================
+# COMANDOS DOCKER COMPOSE
+# ============================================
+
+# Subir todos os serviços do docker-compose.yml em segundo plano
+docker compose up -d
+
+# Subir serviços e forçar reconstrução das imagens
+docker compose up -d --build
+
+# Ver status dos serviços
+docker compose ps
+
+# Ver logs de todos os serviços
+docker compose logs
+
+# Ver logs de um serviço específico (ex: backend)
+docker compose logs backend
+
+# Acompanhar logs em tempo real
+docker compose logs -f
+
+# Parar serviços sem removê-los
+docker compose stop
+
+# Parar e remover containers, redes, etc.
+docker compose down
+
+# Parar, remover containers, redes, volumes e imagens (cuidado!)
+docker compose down -v --rmi all
+
+# Reiniciar um serviço específico
+docker compose restart backend
+
+# Executar um comando em um serviço (ex: bash no backend)
+docker compose exec backend bash
+
+# ============================================
+# COMANDOS PARA LIMPEZA E MANUTENÇÃO
+# ============================================
+
+# Remover containers parados, redes não usadas, imagens pendentes e cache de build
+docker system prune
+
+# Remover tudo (containers, imagens, volumes, etc.) não utilizado
+docker system prune -a --volumes
+
+# Listar volumes
+docker volume ls
+
+# Remover um volume específico
+docker volume rm <volume_name>
+
+# ============================================
+# COMANDOS ÚTEIS PARA DEPURAÇÃO
+# ============================================
+
+# Verificar qual processo está usando uma porta
+sudo lsof -i :3000
+sudo lsof -i :5000
+
+# Verificar se o serviço Docker está rodando
+sudo systemctl status docker
+
+# Reiniciar o serviço Docker
+sudo systemctl restart docker
+
+# Verificar logs do Docker engine
+sudo journalctl -u docker --no-pager | tail -50

@@ -1,0 +1,48 @@
+Tutorial: Como Subir um Projeto Local para o GitHub (Resumo)
+
+Pré-requisitos:
+- Ter o Git instalado (verificar com git --version)
+- Possuir conta no GitHub
+
+Passos principais:
+
+1. Inicializar repositório:
+git init
+
+2. Criar .gitignore para evitar arquivos desnecessários.
+
+3. Adicionar arquivos:
+git add .
+
+4. Criar commit:
+git commit -m "Primeiro commit"
+
+5. Criar repositório no GitHub (site) e copiar a URL.
+
+6. Conectar repositório local ao remoto:
+git remote add origin <url>
+
+7. Ajustar branch principal:
+git branch -M main
+
+8. Enviar projeto:
+git push -u origin main
+
+9. Autenticação:
+Usar token de acesso pessoal no lugar da senha.
+
+10. Verificar no navegador se os arquivos foram enviados.
+
+Comandos úteis:
+- git status → estado dos arquivos
+- git pull → atualizar projeto local
+- git push → enviar alterações
+
+Problemas comuns:
+- Remote já existe → remover e adicionar novamente
+- Branch inexistente → fazer commit antes
+- Erro 403 → usar token válido
+- Erro de conexão → verificar URL ou SSH
+
+Conclusão:
+Projeto publicado com sucesso, pronto para colaboração, automação e deploy.

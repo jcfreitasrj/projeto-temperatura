@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+.env
+
+# Node
+node_modules/
+.env.local
+
+# Docker volumes (não versionar dados)
+data/
+*.log
+
+# IDE
+.vscode/
+.idea/
